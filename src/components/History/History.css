@@ -1,0 +1,22 @@
+.History {
+  flex: 0.8;
+  margin-left: 20px;
+}
+
+.History__videos {
+  display: flex;
+  flex-wrap: wrap;
+  margin: 20px;
+}
+
+.videoCard {
+  margin: 25px;
+}
+
+.videoCard:hover {
+  cursor: pointer;
+}
+
+.MuiCardHeader-title {
+  font-weight: bold !important;
+}

@@ -1,0 +1,139 @@
+.watch {
+  display: flex;
+  margin: 20px 12px;
+  width: 100%;
+}
+
+.watch_wrap {
+  display: flex;
+  gap: 20px;
+  width: 100%;
+}
+
+.watch_left {
+  display: flex;
+  flex: 0.7;
+  width: 100%;
+  flex-direction: column;
+}
+
+@media (max-width: 990px) {
+  .watch_wrap {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.watch_info {
+  margin-top: 0;
+  padding-top: 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.like_wrap {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  gap: 10px;
+}
+
+.watch_leftBottom {
+  padding-bottom: 0;
+  margin-bottom: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+.watch_leftBottom > .title {
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.watch_leftBottom > hr {
+  height: 1px;
+  border: none;
+  background-color: lightgray;
+  margin: 0;
+}
+
+.watch_details {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.watch_detailsContainer {
+  display: flex;
+  padding: 8px 15px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.video_channel {
+  display: flex;
+  flex-direction: column;
+  padding: 0 15px;
+}
+
+.video_channelTitle {
+  margin-bottom: 0;
+}
+
+.video_channelSub {
+  margin-top: 0;
+}
+
+.watch_right {
+  flex: 0.3;
+}
+
+.RelatedVdo {
+  display: flex;
+  flex-direction: row;
+  gap: 8px;
+  margin-bottom: 10px;
+  border-bottom: 1px solid lightgray;
+
+  align-items: center;
+  cursor: pointer;
+}
+
+.RelatedVdo_left > img {
+  max-width: 180px;
+  max-height: 100px;
+}
+
+.RelatedVdo_left {
+  position: relative;
+}
+
+.RelatedVdo_right > :first-child {
+  font-weight: bold;
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.RelatedVdo_right > p {
+  font-weight: 400px;
+  font-size: 13px;
+  margin: 0;
+}
+
+.video_description {
+  padding: 10px;
+}
+
+.video_description_showMoreText {
+  text-decoration: none;
+  display: block;
+  margin: 1rem 0;
+  font-weight: 500;
+}
+
+.info_views {
+  text-transform: uppercase;
+}

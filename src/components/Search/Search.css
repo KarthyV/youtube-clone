@@ -1,0 +1,41 @@
+.search__page {
+  flex: 1;
+  margin-left: 20px;
+}
+
+.search__results {
+  display: flex;
+  flex-direction: column;
+}
+
+.search__results > .RelatedVdo {
+  padding-bottom: 10px;
+}
+
+.channelRow_detailsContainer {
+  display: flex;
+  padding: 8px 15px;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.channelRow_info {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid lightgray;
+}
+
+.channelRow_meta {
+  display: flex;
+  flex-direction: column;
+  margin: 0 25px;
+  font-size: 18px;
+}
+
+.channelRow_meta > .channelTitle {
+  font-weight: bold;
+  margin-bottom: 0;
+}

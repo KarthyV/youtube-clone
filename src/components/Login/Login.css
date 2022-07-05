@@ -1,0 +1,22 @@
+.login_card > img {
+  width: 340px !important;
+  height: 200px !important;
+  object-fit: contain;
+}
+
+.login_card {
+  box-shadow: 11px 10px 20px rgba(0, 0, 0, 0.5) !important;
+}
+
+.login_btn {
+  align-content: center !important;
+  justify-content: center !important;
+}
+
+.login_page {
+  height: 100vh;
+  display: flex;
+  align-content: center;
+  justify-content: center;
+  align-items: center;
+}

@@ -1,0 +1,56 @@
+.RecommendVdo {
+  flex: 0.9;
+  margin-left: 20px;
+}
+
+.RecommendVdo__videos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 10px;
+}
+
+.videoCard {
+  position: relative;
+  margin: 15px 0 !important;
+  box-shadow: 0 0 15px rgb(0 0 0 / 50%) !important;
+}
+
+.videoCard:hover {
+  cursor: pointer;
+}
+
+.MuiCardHeader-title {
+  font-weight: bold !important;
+}
+
+.videoCard_duration {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  padding: 0 5px;
+  border-radius: 7px;
+  font-size: 12px;
+  color: white;
+  background-color: rgba(0, 0, 0, 0.527) !important;
+}
+
+.RecommendVdo__scroller {
+  text-align: center;
+}
+
+.RecommendVdo__scroller {
+  overflow: hidden !important;
+}
+
+.video__meta {
+  padding: 0 !important;
+}
+
+.lazy_load_avatar {
+  margin-left: 10px !important;
+}
+
+.lazy_load_avatar {
+  border-radius: 50% !important;
+}

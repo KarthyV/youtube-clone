@@ -1,0 +1,22 @@
+.subscription__page {
+  flex: 1;
+  margin-left: 20px;
+}
+
+.subscription__results {
+  display: flex;
+  flex-direction: column;
+}
+
+.subscriptionRow_meta {
+  display: flex;
+  flex-direction: column;
+  margin: 0 25px;
+  font-size: 18px;
+  width: 70vw;
+}
+
+.channelRow_meta > .channelTitle {
+  font-weight: bold;
+  margin-bottom: 0;
+}
