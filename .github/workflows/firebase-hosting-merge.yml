@@ -19,12 +19,13 @@ jobs:
           node-version: "14"
 
       - name: Install dependencies
-        run: npm i
+        run: npm i --force
 
       - name: Build
         run: npm run build
         env:
           CI: false
+          NPM_FLAGS: --force
 
       - name: Deploy to firebase
         uses: w9jds/firebase-action@master
