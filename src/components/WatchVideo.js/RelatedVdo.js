@@ -3,18 +3,15 @@ import numeral from "numeral";
 import React, { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import axios from "../../API/axios";
+import { doc, setDoc } from "firebase/firestore";
+import db from "../../firebase";
+import { useSelector } from "react-redux";
 
 const RelatedVdo = ({ video }) => {
   const navigate = useNavigate();
   const {
     id,
-    snippet: {
-      thumbnails: { medium },
-      channelTitle,
-      channelId,
-      title,
-      publishedAt,
-    },
+    snippet: { thumbnails, channelTitle, title, publishedAt, channelId },
   } = video;
 
   const [views, setViews] = useState(null);
@@ -39,13 +36,27 @@ const RelatedVdo = ({ video }) => {
     getVideoDetails();
   }, [id]);
 
+  const { user } = useSelector((state) => state.auth);
+
+  const handleWatch = async () => {
+    const docRef = doc(db, "history", id.videoId + user.id);
+    const payload = {
+      id: id.videoId,
+      title,
+      publishedAt,
+      channelId,
+      thumbnails,
+      userId: user.id,
+    };
+    await setDoc(docRef, payload);
+
+    navigate(`/watch/${id.videoId}`);
+  };
+
   return (
-    <div
-      className="RelatedVdo"
-      onClick={() => navigate(`/watch/${id.videoId}`)}
-    >
+    <div className="RelatedVdo" onClick={handleWatch}>
       <div className="RelatedVdo_left">
-        <img src={medium.url} alt="thumb" />
+        <img src={thumbnails.medium.url} alt="thumb" />
         <span className="videoCard_duration">{_duration}</span>
       </div>
       <div className="RelatedVdo_right">

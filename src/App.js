@@ -11,6 +11,7 @@ import Login from "./components/Login/Login";
 import History from "./components/History/History";
 import Search from "./components/Search/Search";
 import Subscriptions from "./components/Subscriptions/Subscriptions";
+import LikedVideos from "./components/LikedVideos/LikedVideos";
 
 function App() {
   const navigate = useNavigate();
@@ -32,6 +33,18 @@ function App() {
             <div className="app__page">
               <SideBar />
               <RecommendVdo />
+            </div>
+          </div>
+        }
+      />
+      <Route
+        path="/likedVideos"
+        element={
+          <div className="app">
+            <Header />
+            <div className="app__page">
+              <SideBar />
+              <LikedVideos />
             </div>
           </div>
         }

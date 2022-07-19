@@ -22,8 +22,6 @@ const WatchVideo = () => {
     (state) => state.relatedVideos
   );
 
-  console.log(video);
-
   return (
     <div className="watch">
       <div className="watch_wrap">

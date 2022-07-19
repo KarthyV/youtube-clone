@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import "./RecommendVdo.css";
 import Card from "@mui/material/Card";
 import CardHeader from "@mui/material/CardHeader";
 import { useNavigate } from "react-router-dom";
@@ -11,8 +10,8 @@ import { doc, setDoc } from "firebase/firestore";
 import db from "../../firebase";
 import { useSelector } from "react-redux";
 
-const VideoCard = ({ video, id }) => {
-  const { title, publishedAt, thumbnails, channelId } = video.snippet;
+const HistoryCard = ({ video, id }) => {
+  const { title, publishedAt, thumbnails, channelId } = video;
   const navigate = useNavigate();
 
   const [views, setViews] = useState(null);
@@ -103,4 +102,4 @@ const VideoCard = ({ video, id }) => {
   );
 };
 
-export default VideoCard;
+export default HistoryCard;

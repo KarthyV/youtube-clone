@@ -1,13 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import "./Header.css";
-import MenuSharpIcon from "@mui/icons-material/MenuSharp";
-import YouTubeIcon from "@mui/icons-material/YouTube";
 import AppsIcon from "@mui/icons-material/Apps";
 import LogoutIcon from "@mui/icons-material/Logout";
 import SearchIcon from "@mui/icons-material/Search";
 import {
-  Typography,
   Avatar,
   Menu,
   MenuItem,
@@ -44,17 +41,18 @@ const Header = () => {
     setAppAnchorEl(null);
   };
 
-  const handleSearch = () => {
-    if (query !== "") {
+  const handleSearch = (e) => {
+    if (e.key === "Enter" && query !== "") {
       navigate(`/search/${query}`);
     }
   };
   return (
     <div className="header">
       <div className="header__left">
-        <MenuSharpIcon className="header__logo" />
-        <YouTubeIcon className="utube__logo" />
-        <Typography variant="h6">YouTube</Typography>
+        <img
+          src="https://www.freeiconspng.com/thumbs/youtube-logo-png/youtube-logo-png-transparent-image-5.png"
+          alt="ytc_logo"
+        />
       </div>
       <div className="header__center">
         <input
@@ -62,8 +60,9 @@ const Header = () => {
           onChange={(e) => setQuery(e.target.value)}
           type="text"
           placeholder="Search"
+          onKeyDown={handleSearch}
         />
-        <SearchIcon onClick={handleSearch} className="searchIcon" />
+        <SearchIcon className="searchIcon" />
       </div>
       <div className="header__right">
         <IconButton onClick={handleAppClick} size="small" sx={{ ml: 2 }}>
@@ -217,7 +216,12 @@ const Header = () => {
             <Avatar src={user?.picture} alt={user?.name} /> {user?.name}
           </MenuItem>
           <Divider />
-          <MenuItem onClick={() => dispatch(logout())}>
+          <MenuItem
+            onClick={() => {
+              dispatch(logout());
+              navigate("/");
+            }}
+          >
             <ListItemIcon>
               <LogoutIcon fontSize="small" />
             </ListItemIcon>

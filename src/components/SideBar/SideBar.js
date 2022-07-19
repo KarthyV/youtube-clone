@@ -19,13 +19,10 @@ const SideBar = () => {
           <SideBarRow title="Subscriptions" Icon={SubscriptionsIcon} />
         </Link>
         <hr />
-        <Link style={{ textDecoration: "none" }} to="/library">
-          <SideBarRow title="Library" Icon={VideoLibraryIcon} />
-        </Link>
         <Link style={{ textDecoration: "none" }} to="/history">
           <SideBarRow title="History" Icon={HistoryIcon} />
         </Link>
-        <Link style={{ textDecoration: "none" }} to="/likedVidoes">
+        <Link style={{ textDecoration: "none" }} to="/likedVideos">
           <SideBarRow title="Liked Videos" Icon={ThumbUpIcon} />
         </Link>
         <hr />

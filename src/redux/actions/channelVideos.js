@@ -22,7 +22,7 @@ export const getVideosByChannel = (id) => async (dispatch, getState) => {
         pageToken: getState().channelVideos.nextPageToken,
       },
     });
-    console.log(data);
+
     dispatch({
       type: "CHANNEL_VIDEOS_SUCCESS",
       payload: {

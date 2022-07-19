@@ -14,7 +14,6 @@ export const getMySubscriptions = () => async (dispatch, getState) => {
         Authorization: `Bearer ${getState().auth.accessToken}`,
       },
     });
-    console.log(data);
 
     dispatch({
       type: "SUBSCRIPTIONS_CHANNEL_SUCCESS",

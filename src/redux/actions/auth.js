@@ -11,11 +11,11 @@ export const login = () => async (dispatch) => {
 
     const res = await firebase.auth().signInWithPopup(provider);
 
-    console.log(res);
     const accessToken = res.credential.accessToken;
     const profile = {
       name: res.additionalUserInfo.profile.name,
       picture: res.additionalUserInfo.profile.picture,
+      id: res.additionalUserInfo.profile.id,
     };
 
     sessionStorage.setItem("ytc-access-token", accessToken);

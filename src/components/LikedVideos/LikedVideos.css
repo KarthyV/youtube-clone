@@ -1,0 +1,11 @@
+.LikedVdo {
+  flex: 0.9;
+  margin-left: 20px;
+}
+
+.LikedVdo__videos {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+  gap: 10px;
+}

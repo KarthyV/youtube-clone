@@ -8,6 +8,7 @@ import relatedVideoReducer from "./relatedVideoReducer";
 import searchResultsReducer from "./searchResultReducer";
 import subscriptionsReducer from "./subscriptionsReducer";
 import channelVideosReducer from "./channelVideosReducer";
+import likedVideosReducer from "./likedVideoReducer";
 
 export default combineReducers({
   auth: authReducer,
@@ -18,4 +19,5 @@ export default combineReducers({
   searchResults: searchResultsReducer,
   subscriptions: subscriptionsReducer,
   channelVideos: channelVideosReducer,
+  likedVideos: likedVideosReducer,
 });

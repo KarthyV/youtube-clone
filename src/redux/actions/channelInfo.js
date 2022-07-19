@@ -10,7 +10,7 @@ export const getChannelInfo = (id) => async (dispatch) => {
         id,
       },
     });
-    console.log(data);
+
     dispatch({ type: "CHANNEL_INFO_SUCCESS", payload: data.items[0] });
   } catch (error) {
     dispatch({ type: "CHANNEL_INFO_FAIL", payload: error.message });

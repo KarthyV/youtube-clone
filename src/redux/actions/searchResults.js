@@ -11,7 +11,6 @@ export const getSearchResults = (query) => async (dispatch) => {
         type: "video,channel",
       },
     });
-    console.log(data);
 
     dispatch({ type: "SEARCH_RESULTS_SUCCESS", payload: data.items });
   } catch (error) {
