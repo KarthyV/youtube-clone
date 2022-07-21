@@ -11,12 +11,14 @@ const LikedVideos = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    // dispatching the getLikedVideos action
     dispatch(getLikedVideos());
   }, [dispatch]);
 
-  const { videos, loading } = useSelector((state) => state.likedVideos);
+  const { videos, loading } = useSelector((state) => state.likedVideos); // Destructing the videos from likedVideos state
 
   const fetchData = () => {
+    // helper function for InfiniteScroll
     dispatch(getLikedVideos());
   };
 

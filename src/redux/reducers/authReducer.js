@@ -1,4 +1,5 @@
 const initialState = {
+  // If user details already available in session storage, restoring them
   accessToken: sessionStorage.getItem("ytc-access-token")
     ? sessionStorage.getItem("ytc-access-token")
     : null,

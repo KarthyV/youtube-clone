@@ -37,6 +37,7 @@ const VideoRow = ({
   }, [id]);
 
   return (
+    // RelatedVideo Component with css adjusted
     <div className="RelatedVdo" onClick={() => navigate(`/watch/${id}`)}>
       <div className="RelatedVdo_left">
         <img src={thumbnail} alt="thumb" />

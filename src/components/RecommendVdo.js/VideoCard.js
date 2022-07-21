@@ -12,7 +12,8 @@ import db from "../../firebase";
 import { useSelector } from "react-redux";
 
 const VideoCard = ({ video, id }) => {
-  const { title, publishedAt, thumbnails, channelId } = video.snippet;
+  // Getting the video details and id as props
+  const { title, publishedAt, thumbnails, channelId } = video.snippet; // Destructing the video details
   const navigate = useNavigate();
 
   const [views, setViews] = useState(null);
@@ -28,6 +29,7 @@ const VideoCard = ({ video, id }) => {
       const {
         data: { items },
       } = await axios.get("/videos", {
+        // Getting the live status of the video by id
         params: {
           part: "contentDetails,statistics",
           id: id,
@@ -44,6 +46,7 @@ const VideoCard = ({ video, id }) => {
       const {
         data: { items },
       } = await axios.get("/channels", {
+        // Getting the channel details  by channel id
         params: {
           part: "snippet",
           id: channelId,
@@ -58,6 +61,7 @@ const VideoCard = ({ video, id }) => {
   const { user } = useSelector((state) => state.auth);
 
   const handleWatch = async () => {
+    // Whenever the user clicks to watch a video, same data is saved in fireStore as well
     const docRef = doc(db, "history", id + user.id);
     const payload = {
       id,

@@ -11,7 +11,8 @@ import db from "../../firebase";
 import { useSelector } from "react-redux";
 
 const HistoryCard = ({ video, id }) => {
-  const { title, publishedAt, thumbnails, channelId } = video;
+  //Copy of VideoCard Component modified based on the firebase data format
+  const { title, publishedAt, thumbnails, channelId } = video; // Destructing the required fields from the video prop received
   const navigate = useNavigate();
 
   const [views, setViews] = useState(null);
@@ -25,10 +26,10 @@ const HistoryCard = ({ video, id }) => {
   useEffect(() => {
     const getVideoDetails = async () => {
       const {
-        data: { items },
+        data: { items }, // Destructing the items field alone from the response to be received
       } = await axios.get("/videos", {
         params: {
-          part: "contentDetails,statistics",
+          part: "contentDetails,statistics", // Getting the video details by video Id
           id: id,
         },
       });
@@ -43,6 +44,7 @@ const HistoryCard = ({ video, id }) => {
       const {
         data: { items },
       } = await axios.get("/channels", {
+        // Getting the channel details by video Id
         params: {
           part: "snippet",
           id: channelId,
@@ -57,6 +59,7 @@ const HistoryCard = ({ video, id }) => {
   const { user } = useSelector((state) => state.auth);
 
   const handleWatch = async () => {
+    // Whenever the user clicks to watch a video, same data is saved in fireStore as well
     const docRef = doc(db, "history", id + user.id);
     const payload = {
       id,

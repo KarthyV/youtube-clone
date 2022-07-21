@@ -1,6 +1,7 @@
 import axios from "../../API/axios";
 
 export const getVideosByChannel = (id) => async (dispatch, getState) => {
+  //Getting the channel Videos by channel id
   try {
     dispatch({ type: "CHANNEL_VIDEOS_REQUEST" });
 

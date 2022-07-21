@@ -8,6 +8,7 @@ import db from "../../firebase";
 import { useSelector } from "react-redux";
 
 const RelatedVdo = ({ video }) => {
+  // Just like videoCard component designed for horizontal view
   const navigate = useNavigate();
   const {
     id,

@@ -8,6 +8,7 @@ import CircularProgress from "@mui/material/CircularProgress";
 import SkeletonCard from "../Skeleton/Skeleton";
 
 const RecommendVdo = () => {
+  // Same as liked videos component
   const dispatch = useDispatch();
   const { videos, loading } = useSelector((state) => state.homeVideos);
 

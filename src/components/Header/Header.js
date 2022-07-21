@@ -20,7 +20,7 @@ const Header = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  const { user } = useSelector((state) => state.auth);
+  const { user } = useSelector((state) => state.auth); //Getting the user from auth State
 
   const [query, setQuery] = useState("");
   const [anchorEl, setAnchorEl] = useState(null);
@@ -42,6 +42,7 @@ const Header = () => {
   };
 
   const handleSearch = (e) => {
+    //If query is not empty and "Enter" is pressed redirected to search page
     if (e.key === "Enter" && query !== "") {
       navigate(`/search/${query}`);
     }
@@ -218,7 +219,7 @@ const Header = () => {
           <Divider />
           <MenuItem
             onClick={() => {
-              dispatch(logout());
+              dispatch(logout()); //dispatching logout action and redirected to homePage
               navigate("/");
             }}
           >

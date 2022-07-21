@@ -11,10 +11,12 @@ import { useNavigate } from "react-router-dom";
 const Login = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
-  const accessToken = useSelector((state) => state.auth.accessToken);
+  const accessToken = useSelector((state) => state.auth.accessToken); // Getting the access token provided by google after the user is authenticated
 
   useEffect(() => {
+    // If no access token, user will be redirected to the login page
     if (accessToken) navigate("/");
+    // eslint-disable-next-line
   }, [accessToken]);
 
   return (
@@ -29,7 +31,7 @@ const Login = () => {
         <CardActions className="login_btn">
           <GoogleButton
             onClick={() => {
-              dispatch(login());
+              dispatch(login()); // login action is dispatched
             }}
           />
         </CardActions>

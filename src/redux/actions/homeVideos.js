@@ -1,6 +1,7 @@
 import axios from "../../API/axios";
 
 export const homeVideos = () => async (dispatch, getState) => {
+  // Getting the recommended Videos based on the regionCode
   try {
     dispatch({ type: "HOME_VIDEOS_REQUEST" });
 

@@ -3,6 +3,7 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 const ChannelRow = ({ title, thumbnail, description, id }) => {
+  // If search result is a channel,
   const navigate = useNavigate();
 
   return (

@@ -10,15 +10,14 @@ const History = () => {
   const { user } = useSelector((state) => state.auth);
 
   useEffect(() => {
-    const db = firebase.firestore();
+    const db = firebase.firestore(); // Firebase Firestore
     // db.collection("history").where("userId", "==", user.id).get().then((snapshot) => setVideos(snapshot.docs.map(doc => doc.data())));
     onSnapshot(
+      // Query for getting the watch history based on the user Id
       db.collection("history").where("userId", "==", user.id),
       (snapshot) => setVideos(snapshot.docs.map((doc) => doc.data()).reverse())
     );
   }, [user.id]);
-
-  console.log(videos);
 
   return (
     <div className="History">
@@ -27,11 +26,12 @@ const History = () => {
         className="History__videos"
         style={{ borderTop: "1px solid lightgray" }}
       >
-        {videos.length > 0 ? (
+        {videos.length > 0 ? ( // If videos are available
           videos.map((video) => {
             return <HistoryCard id={video.id} video={video} key={video.id} />;
           })
         ) : (
+          // If not available
           <h3>No Videos Found...Please watch</h3>
         )}
       </div>

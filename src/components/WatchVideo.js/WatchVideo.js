@@ -17,15 +17,16 @@ const WatchVideo = () => {
     dispatch(getRelatedVideos(id));
   }, [dispatch, id]);
 
-  const { video, loading } = useSelector((state) => state.watchVideo);
+  const { video, loading } = useSelector((state) => state.watchVideo); // Getting the video from watchVideo state
   const { video: relatedVideos, loading: relatedVideosLoading } = useSelector(
     (state) => state.relatedVideos
-  );
+  ); // Getting the related Videos from relatedVideos state
 
   return (
     <div className="watch">
       <div className="watch_wrap">
         <div className="watch_left">
+          {/* Video Player */}
           <iframe
             title={video?.snippet?.title}
             allowFullScreen
@@ -34,6 +35,7 @@ const WatchVideo = () => {
             src={`https://www.youtube.com/embed/${id}`}
             frameBorder="0"
           ></iframe>
+          {/* Video Meta Date is rendered by VideoMetaData component */}
           {!loading ? (
             <VideoMetaData video={video} videoId={id} />
           ) : (
@@ -42,6 +44,7 @@ const WatchVideo = () => {
         </div>
         <div className="watch_right">
           <h3>Related Videos ⬇</h3>
+          {/* Horizontal view of related videos */}
           {!relatedVideosLoading
             ? relatedVideos
                 ?.filter((video) => video.snippet)

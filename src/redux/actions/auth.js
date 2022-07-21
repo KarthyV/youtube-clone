@@ -6,10 +6,10 @@ export const login = () => async (dispatch) => {
       type: "LOGIN_REQUEST",
     });
 
-    const provider = new firebase.auth.GoogleAuthProvider();
-    provider.addScope("https://www.googleapis.com/auth/youtube.force-ssl");
+    const provider = new firebase.auth.GoogleAuthProvider(); // Firebase google auth provider
+    provider.addScope("https://www.googleapis.com/auth/youtube.force-ssl"); // adding the scope of youtube for using the accesstoken as key
 
-    const res = await firebase.auth().signInWithPopup(provider);
+    const res = await firebase.auth().signInWithPopup(provider); //SignIn with popup method
 
     const accessToken = res.credential.accessToken;
     const profile = {
@@ -18,7 +18,7 @@ export const login = () => async (dispatch) => {
       id: res.additionalUserInfo.profile.id,
     };
 
-    sessionStorage.setItem("ytc-access-token", accessToken);
+    sessionStorage.setItem("ytc-access-token", accessToken); //Storing the details in sessionStorage as well
     sessionStorage.setItem("ytc-user", JSON.stringify(profile));
 
     dispatch({
@@ -30,17 +30,17 @@ export const login = () => async (dispatch) => {
       payload: profile,
     });
   } catch (error) {
-    console.log(error);
     dispatch({ type: "LOGIN_FAIL", payload: error.message });
   }
 };
 
 export const logout = () => async (dispatch) => {
+  //Logout action, firebase method
   try {
     await firebase.auth().signOut();
     dispatch({ type: "LOGOUT" });
 
-    sessionStorage.clear();
+    sessionStorage.clear(); // clearing the session storage once logged out
   } catch (error) {
     console.log(error);
   }

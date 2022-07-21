@@ -17,7 +17,7 @@ const channelVideosReducer = (state = ChannelVideos, action) => {
         ...state,
         videos:
           state.activeCategory === action.payload.category
-            ? [...state.videos, ...action.payload.videos]
+            ? [...state.videos, ...action.payload.videos] // Adding the previous results with the new results based on the category
             : action.payload.videos,
         loading: false,
         playlistId: action.payload.playlistId,

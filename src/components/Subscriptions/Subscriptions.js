@@ -17,7 +17,7 @@ const Subscriptions = () => {
 
   const { channels, nextPageToken } = useSelector(
     (state) => state.subscriptions
-  );
+  ); // Getting the channels and next page token from subscriptions state
 
   useEffect(() => {
     if (nextPageToken === undefined) setHasMore(false);

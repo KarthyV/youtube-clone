@@ -1,6 +1,7 @@
 import axios from "../../API/axios";
 
 export const getChannelInfo = (id) => async (dispatch) => {
+  // Getting channel Info by id
   try {
     dispatch({ type: "CHANNEL_INFO_REQUEST" });
 
@@ -18,6 +19,7 @@ export const getChannelInfo = (id) => async (dispatch) => {
 };
 
 export const getSubscriptionStatus = (id) => async (dispatch, getState) => {
+  // Getting the subscriptions status by channel Id
   try {
     const { data } = await axios.get("/subscriptions", {
       params: {
@@ -26,10 +28,10 @@ export const getSubscriptionStatus = (id) => async (dispatch, getState) => {
         mine: true,
       },
       headers: {
+        // Based on the accessToken provided by google
         Authorization: `Bearer ${getState().auth.accessToken}`,
       },
     });
-    console.log(data);
 
     dispatch({
       type: "SUBSCRIPTION_STATUS_SUCCESS",
@@ -39,7 +41,7 @@ export const getSubscriptionStatus = (id) => async (dispatch, getState) => {
       },
     });
   } catch (error) {
-    //   dispatch({ type: "CHANNEL_INFO_FAIL", payload: error.message });
-    console.log(error.message);
+    dispatch({ type: "CHANNEL_INFO_FAIL", payload: error.message });
+    // console.log(error.message);
   }
 };

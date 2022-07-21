@@ -2,7 +2,6 @@ import React from "react";
 import "./SideBar.css";
 import HomeIcon from "@mui/icons-material/Home";
 import SubscriptionsIcon from "@mui/icons-material/Subscriptions";
-import VideoLibraryIcon from "@mui/icons-material/VideoLibrary";
 import HistoryIcon from "@mui/icons-material/History";
 import ThumbUpIcon from "@mui/icons-material/ThumbUp";
 import SideBarRow from "./SideBarRow";

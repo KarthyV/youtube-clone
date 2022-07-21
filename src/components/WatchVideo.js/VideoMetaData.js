@@ -11,6 +11,8 @@ import {
   getSubscriptionStatus,
 } from "../../redux/actions/channelInfo";
 
+// This component shows the metaData of the video based on the videoId and channelId
+
 const VideoMetaData = ({ video: { snippet, statistics }, videoId }) => {
   const navigate = useNavigate();
   const dispatch = useDispatch();

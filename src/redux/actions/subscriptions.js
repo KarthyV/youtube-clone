@@ -4,6 +4,7 @@ export const getMySubscriptions = () => async (dispatch, getState) => {
   try {
     dispatch({ type: "SUBSCRIPTIONS_CHANNEL_REQUEST" });
     const { data } = await axios.get("/subscriptions", {
+      // Getting the subscriptions of the user based on google accessToken
       params: {
         part: "snippet,contentDetails",
         mine: true,

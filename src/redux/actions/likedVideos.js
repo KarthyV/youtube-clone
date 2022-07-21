@@ -5,6 +5,7 @@ export const getLikedVideos = () => async (dispatch, getState) => {
     dispatch({ type: "LIKED_VIDEOS_REQUEST" });
 
     const { data } = await axios.get("/videos", {
+      // Getting the liked Videos of the user based on google access token
       params: {
         part: "snippet,contentDetails,statistics",
         myRating: "like",

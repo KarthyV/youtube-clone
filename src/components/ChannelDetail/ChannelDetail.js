@@ -12,28 +12,29 @@ import SkeletonCard from "../Skeleton/Skeleton";
 
 const ChannelDetail = () => {
   const dispatch = useDispatch();
-  const { id } = useParams();
+  const { id } = useParams(); //Getting the channel id from the URL
   const [hasMore, setHasMore] = useState(true);
 
   useEffect(() => {
-    dispatch(getChannelInfo(id));
-    dispatch(getVideosByChannel(id));
+    dispatch(getChannelInfo(id)); // dispatching getChannelInfo action
+    dispatch(getVideosByChannel(id)); // dispatching getVideosByChannel action
   }, [id, dispatch]);
 
   const {
     channel: { snippet, statistics },
     subscriptionStatus,
-  } = useSelector((state) => state.channelInfo);
+  } = useSelector((state) => state.channelInfo); // Destructing the required fields from the channelInfo state
 
   const { videos, nextPageToken, loading } = useSelector(
     (state) => state.channelVideos
-  );
+  ); // Getting the videos and next page token from channelVideos state
 
   useEffect(() => {
-    if (nextPageToken === "") setHasMore(false);
+    if (nextPageToken === "") setHasMore(false); //If nextPageToken is not available changing the hasMore state to false
   }, [nextPageToken, hasMore]);
 
   const fetchData = () => {
+    // Helper function for infiniteScroll runs every-time when the data is scrolled to the length set
     dispatch(getVideosByChannel(id));
   };
 
@@ -76,6 +77,7 @@ const ChannelDetail = () => {
             {!loading
               ? videos.map((video) => {
                   return (
+                    //If videos are available rendering them by VideoCard component
                     <VideoCard
                       id={video.snippet.resourceId.videoId}
                       video={video}
@@ -83,7 +85,10 @@ const ChannelDetail = () => {
                     />
                   );
                 })
-              : [...Array(20)].map((_, i) => <SkeletonCard key={i} />)}
+              : [...Array(20)].map((_, i) => {
+                  // if not available rendering a skeletonCard
+                  return <SkeletonCard key={i} />;
+                })}
           </div>
         </InfiniteScroll>
       </div>
