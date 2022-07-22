@@ -6,7 +6,7 @@ import { onSnapshot } from "firebase/firestore";
 import { useSelector } from "react-redux";
 
 const History = () => {
-  const [videos, setVideos] = useState([]);
+  const [videos, setVideos] = useState(null);
   const { user } = useSelector((state) => state.auth);
 
   useEffect(() => {
@@ -19,24 +19,26 @@ const History = () => {
     );
   }, [user.id]);
 
-  return (
-    <div className="History">
-      <h1>History</h1>
-      <div
-        className="History__videos"
-        style={{ borderTop: "1px solid lightgray" }}
-      >
-        {videos.length > 0 ? ( // If videos are available
-          videos.map((video) => {
-            return <HistoryCard id={video.id} video={video} key={video.id} />;
-          })
-        ) : (
-          // If not available
-          <h3>No Videos Found...Please watch</h3>
-        )}
+  if (!videos) return <h3>Loading...</h3>;
+  else
+    return (
+      <div className="History">
+        <h1>History</h1>
+        <div
+          className="History__videos"
+          style={{ borderTop: "1px solid lightgray" }}
+        >
+          {videos.length > 0 ? ( // If videos are available
+            videos.map((video) => {
+              return <HistoryCard id={video.id} video={video} key={video.id} />;
+            })
+          ) : (
+            // If not available
+            <h3>No Videos Found...Please watch</h3>
+          )}
+        </div>
       </div>
-    </div>
-  );
+    );
 };
 
 export default History;
