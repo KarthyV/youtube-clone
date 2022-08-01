@@ -10,6 +10,7 @@ import {
   getChannelInfo,
   getSubscriptionStatus,
 } from "../../redux/actions/channelInfo";
+import axios from "../../API/axios";
 
 // This component shows the metaData of the video based on the videoId and channelId
 
@@ -25,13 +26,59 @@ const VideoMetaData = ({ video: { snippet, statistics }, videoId }) => {
     dispatch(getSubscriptionStatus(channelId));
   }, [dispatch, channelId]);
 
-  const { channel, subscriptionStatus } = useSelector(
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
+
+  const { channel, subscriptionStatus, subscriptionId } = useSelector(
     (state) => state.channelInfo
   );
   const { statistics: channelStats, snippet: channelSnippet } = channel;
 
+  const { accessToken } = useSelector((state) => state.auth);
+
   const handleRedirectChannel = () => {
     navigate(`/channel/${channelId}`);
+  };
+
+  const handleSubscription = () => {
+    if (!subscriptionStatus) {
+      const obj = {
+        snippet: {
+          resourceId: {
+            kind: "youtube#channel",
+            channelId: channelId,
+          },
+        },
+      };
+      axios
+        .post("/subscriptions", obj, {
+          params: {
+            part: "snippet",
+          },
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        })
+        .then((res) => {
+          if (res.status === 200) dispatch(getSubscriptionStatus(channelId));
+        })
+        .catch((err) => console.log(err));
+    } else {
+      axios
+        .delete("/subscriptions", {
+          params: {
+            id: subscriptionId,
+          },
+          headers: {
+            Authorization: `Bearer ${accessToken}`,
+          },
+        })
+        .then((res) => {
+          if (res.status === 204) dispatch(getSubscriptionStatus(channelId));
+        })
+        .catch((err) => console.log(err));
+    }
   };
 
   return (
@@ -70,6 +117,7 @@ const VideoMetaData = ({ video: { snippet, statistics }, videoId }) => {
             className="video_subBtn"
             color={subscriptionStatus ? "success" : "primary"}
             variant={subscriptionStatus ? "outlined" : "contained"}
+            onClick={handleSubscription}
           >
             {subscriptionStatus ? "Subscribed" : "Subscribe"}
           </Button>
