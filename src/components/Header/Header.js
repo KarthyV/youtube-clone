@@ -51,7 +51,7 @@ const Header = () => {
     <div className="header">
       <div className="header__left">
         <img
-          src="https://www.freeiconspng.com/thumbs/youtube-logo-png/youtube-logo-png-transparent-image-5.png"
+          src="https://cdn-icons-png.flaticon.com/512/17/17550.png"
           alt="ytc_logo"
         />
       </div>

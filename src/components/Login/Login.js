@@ -24,7 +24,7 @@ const Login = () => {
       <Card sx={{ maxWidth: 345 }} className="login_card">
         <CardMedia
           component="img"
-          image="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/YouTube_Logo_2017.svg/2560px-YouTube_Logo_2017.svg.png"
+          image="https://cdn-icons-png.flaticon.com/512/17/17550.png"
           alt="green iguana"
         />
 
